@@ -1,23 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const servicesPopup = document.getElementById("services-popup");
-    const exploreServicesBtn = document.getElementById("explore-services");
-    const closeBtn = document.querySelector(".close-btn");
+    const sendLocationBtn = document.getElementById("send-location");
 
-    // عرض النافذة المنبثقة عند الضغط على "استكشاف الخدمات"
-    exploreServicesBtn.addEventListener("click", function(event) {
+    // إرسال الموقع عبر واتساب
+    sendLocationBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        servicesPopup.style.display = "flex";
-    });
-
-    // إغلاق النافذة عند الضغط على زر الإغلاق
-    closeBtn.addEventListener("click", function() {
-        servicesPopup.style.display = "none";
-    });
-
-    // إغلاق النافذة عند الضغط خارجها
-    window.addEventListener("click", function(event) {
-        if (event.target === servicesPopup) {
-            servicesPopup.style.display = "none";
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                const whatsappLink = `https://wa.me/213000000000?text=📍 موقعي الحالي: https://www.google.com/maps?q=${latitude},${longitude}`;
+                window.open(whatsappLink, "_blank");
+            }, function(error) {
+                alert("⚠️ لم يتمكن المتصفح من الوصول إلى الموقع، الرجاء تمكين خدمة الموقع.");
+            });
+        } else {
+            alert("⚠️ المتصفح لا يدعم خاصية تحديد الموقع.");
         }
     });
 });

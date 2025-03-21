@@ -3,34 +3,96 @@ body {
     font-family: 'Tajawal', sans-serif;
     direction: rtl;
     text-align: center;
-    background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+    background: linear-gradient(to bottom, #e3f2fd, #bbdefb); /* خلفية الموقع */
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-/* تأثيرات عند ظهور العناصر */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out forwards;
+/* رأس الصفحة */
+header {
+    background: rgba(255, 255, 255, 0.9); /* خلفية شبه شفافة */
+    color: black;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* تحسين عنوان الموقع والشعار */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
-/* تأثير نبض للأزرار */
-.bounce {
-    animation: bounce 1.5s infinite alternate ease-in-out;
+.logo {
+    width: 50px; /* تصغير الشعار */
+    height: auto;
 }
 
-@keyframes bounce {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
+.site-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* زر استكشاف الخدمات */
+/* القائمة */
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.9); /* خلفية شبه شفافة */
+    width: 100%;
+}
+
+.nav-list li {
+    padding: 15px 20px;
+    position: relative;
+}
+
+/* تغيير لون النصوص */
+.nav-list a {
+    color: black !important;
+    font-size: 18px;
+    transition: 0.3s;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-list a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* الصفحة الرئيسية */
+.hero {
+    padding: 100px 20px;
+    background: rgba(255, 255, 255, 0.6); /* جعل الخلفية شفافة */
+    border-radius: 15px;
+    width: 80%;
+    margin: 160px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* تأثير الضبابية لجعل الشفافية أكثر أناقة */
+}
+
+/* تحسين حجم الشعار في الواجهة الرئيسية */
+.hero-logo {
+    width: 80px; /* تصغير الشعار */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* زر رئيسي */
 .btn {
     background: #007bff;
     color: white;
@@ -39,33 +101,52 @@ body {
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
     font-weight: bold;
-    border: none;
-    cursor: pointer;
 }
 
 .btn:hover {
     background: #0056b3;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* القائمة المنبثقة */
-.popup {
+/* القائمة المنسدلة */
+.dropdown-content {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9); /* جعل القائمة المنسدلة شفافة */
+    min-width: 220px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    top: 100%;
+    right: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+/* تحسين ألوان القوائم المنسدلة */
+.dropdown-content a {
+    color: black !important;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dropdown-content a:hover {
+    background: #007bff;
+    color: white !important;
+}
+
+/* إظهار القائمة عند تمرير الفأرة */
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* التذييل */
+footer {
+    background: #343a40;
+    color: white;
+    padding: 10px;
 }
