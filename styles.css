@@ -1,0 +1,71 @@
+/* إعدادات عامة */
+body {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    text-align: center;
+    background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* تأثيرات عند ظهور العناصر */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* تأثير نبض للأزرار */
+.bounce {
+    animation: bounce 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* زر استكشاف الخدمات */
+.btn {
+    background: #007bff;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+/* القائمة المنبثقة */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
