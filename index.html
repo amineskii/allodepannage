@@ -6,10 +6,97 @@
     <title> ألو ديبناج | خدمات المساعدة على الطريق</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s, opacity 0.3s;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .image-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            z-index: 1000;
+            border-radius: 8px;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+        .image-popup img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+        .image-popup .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        header, footer {
+            text-align: center;
+            padding: 15px;
+            background: #333;
+            color: white;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background: #007BFF;
+            display: inline-block;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            .gallery {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- رأس الصفحة -->
     <header>
         <div class="logo-container">
             <img src="logo.png" alt="شعار ألو ديبناج" class="logo">
@@ -19,40 +106,56 @@
             <ul class="nav-list">
                 <li><a href="#home">🏠 الرئيسية</a></li>
                 <li class="dropdown">
-                    <a href="#">🛠️ الخدمات ▼</a>
+                    <a href="#services">🛠️ الخدمات ▼</a>
                     <ul class="dropdown-content">
                         <li><a href="#towing">🚙 سحب السيارات</a></li>
                         <li><a href="#repair">🛠️ إصلاح الأعطال</a></li>
                         <li><a href="#fuel">⛽ تعبئة الوقود</a></li>
-                        <li><a href="#unlock">🔑 فتح الأبواب</a></li>
+                        <li><a href="unlock.html">🔑 فتح الأبواب</a></li>
                         <li><a href="#emergency">⚠️ الاستجابة للطوارئ</a></li>
                         <li><a href="#membership">📜 الاشتراك</a></li>
                         <li><a href="#tracking">📍 تتبع المركبات</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#">📞 اتصل بنا ▼</a>
-                    <ul class="dropdown-content">
-                        <li><a href="tel:+213000000000">📞 الاتصال عبر الهاتف</a></li>
-                        <li><a href="#" id="send-location">💬 الاتصال عبر واتساب</a></li>
-                    </ul>
-                </li>
+                <li><a href="#gallery">🖼️ معرض الخدمات</a></li>
+                <li><a href="#contact">📞 اتصل بنا</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- الصفحة الرئيسية -->
     <section id="home" class="hero">
-        <img src="logo.png" alt="شعار ألو ديبناج" class="hero-logo">
         <h2>🚗 جاهزون لمساعدتك على الطريق!</h2>
         <p>خدمات سريعة وآمنة متاحة 24/7 أينما كنت.</p>
-        <a href="#services" class="btn">🔍 استكشاف الخدمات</a>
     </section>
+    
+    <section id="gallery" class="gallery">
+        <img src="image1.jpg" alt="صورة 1" onclick="openImage(this.src)">
+        <img src="image2.jpg" alt="صورة 2" onclick="openImage(this.src)">
+        <img src="image3.jpg" alt="صورة 3" onclick="openImage(this.src)">
+        <img src="image4.jpg" alt="صورة 4" onclick="openImage(this.src)">
+        <img src="image5.jpg" alt="صورة 5" onclick="openImage(this.src)">
+        <img src="image6.jpg" alt="صورة 6" onclick="openImage(this.src)">
+        <img src="image7.jpg" alt="صورة 7" onclick="openImage(this.src)">
+        <img src="image8.jpg" alt="صورة 8" onclick="openImage(this.src)">
+    </section>
+    
+    <div class="image-popup" id="popup">
+        <span class="close-popup" onclick="closeImage()">&times;</span>
+        <img id="popup-img" src="" alt="">
+    </div>
 
-    <!-- التذييل -->
+    <script>
+        function openImage(src) {
+            document.getElementById("popup-img").src = src;
+            document.getElementById("popup").style.display = "block";
+        }
+        function closeImage() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+    
     <footer>
         <p>© 2025 ألو ديبناج - جميع الحقوق محفوظة.</p>
     </footer>
-
 </body>
 </html>
