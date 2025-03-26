@@ -14,53 +14,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s, opacity 0.3s;
-            cursor: pointer;
-        }
-        .gallery img:hover {
-            transform: scale(1.1);
-            opacity: 0.8;
-        }
-        .image-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            z-index: 1000;
-            border-radius: 8px;
-            max-width: 90%;
-            max-height: 90%;
-            text-align: center;
-        }
-        .image-popup img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 8px;
-        }
-        .image-popup .close-popup {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-        }
         header, footer {
             text-align: center;
             padding: 15px;
@@ -90,9 +43,25 @@
                 flex-direction: column;
                 text-align: center;
             }
-            .gallery {
-                padding: 10px;
-            }
+        }
+        .gallery {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s, opacity 0.3s;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -117,7 +86,7 @@
                         <li><a href="#tracking">📍 تتبع المركبات</a></li>
                     </ul>
                 </li>
-                <li><a href="#gallery">🖼️ معرض الخدمات</a></li>
+                <li><a href="#gallery" onclick="showGallery()">🖼️ معرض الخدمات</a></li>
                 <li><a href="#contact">📞 اتصل بنا</a></li>
             </ul>
         </nav>
@@ -129,28 +98,19 @@
     </section>
     
     <section id="gallery" class="gallery">
-        <img src="image1.jpg" alt="صورة 1" onclick="openImage(this.src)">
-        <img src="image2.jpg" alt="صورة 2" onclick="openImage(this.src)">
-        <img src="image3.jpg" alt="صورة 3" onclick="openImage(this.src)">
-        <img src="image4.jpg" alt="صورة 4" onclick="openImage(this.src)">
-        <img src="image5.jpg" alt="صورة 5" onclick="openImage(this.src)">
-        <img src="image6.jpg" alt="صورة 6" onclick="openImage(this.src)">
-        <img src="image7.jpg" alt="صورة 7" onclick="openImage(this.src)">
-        <img src="image8.jpg" alt="صورة 8" onclick="openImage(this.src)">
+        <img src="image1.jpg" alt="صورة 1">
+        <img src="image2.jpg" alt="صورة 2">
+        <img src="image3.jpg" alt="صورة 3">
+        <img src="image4.jpg" alt="صورة 4">
+        <img src="image5.jpg" alt="صورة 5">
+        <img src="image6.jpg" alt="صورة 6">
+        <img src="image7.jpg" alt="صورة 7">
+        <img src="image8.jpg" alt="صورة 8">
     </section>
-    
-    <div class="image-popup" id="popup">
-        <span class="close-popup" onclick="closeImage()">&times;</span>
-        <img id="popup-img" src="" alt="">
-    </div>
 
     <script>
-        function openImage(src) {
-            document.getElementById("popup-img").src = src;
-            document.getElementById("popup").style.display = "block";
-        }
-        function closeImage() {
-            document.getElementById("popup").style.display = "none";
+        function showGallery() {
+            document.getElementById("gallery").style.display = "flex";
         }
     </script>
     
