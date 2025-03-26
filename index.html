@@ -29,6 +29,7 @@
         }
         nav ul li {
             margin: 10px;
+            position: relative;
         }
         nav ul li a {
             text-decoration: none;
@@ -37,6 +38,26 @@
             border-radius: 5px;
             background: #007BFF;
             display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            text-align: left;
+        }
+        .dropdown-content li {
+            padding: 10px;
+        }
+        .dropdown-content li a {
+            color: black;
+            display: block;
+            padding: 10px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
         @media (max-width: 768px) {
             nav ul {
@@ -63,6 +84,9 @@
             transform: scale(1.1);
             opacity: 0.8;
         }
+        .gallery img:active {
+            transform: scale(1.5);
+        }
     </style>
 </head>
 <body>
@@ -73,23 +97,26 @@
         </div>
         <nav>
             <ul class="nav-list">
-                <li><a href="#home">🏠 الرئيسية</a></li>
+                <li><a href="index.html">🏠 الرئيسية</a></li>
                 <li class="dropdown">
-                    <a href="#services">🛠️ الخدمات ▼</a>
+                    <a href="#">🛠️ الخدمات ▼</a>
                     <ul class="dropdown-content">
                         <li><a href="#towing">🚙 سحب السيارات</a></li>
                         <li><a href="#repair">🛠️ إصلاح الأعطال</a></li>
                         <li><a href="#fuel">⛽ تعبئة الوقود</a></li>
-                        <li><a href="unlock.html">🔑 فتح الأبواب</a></li>
+                        <li><a href="unlock.html" target="_blank">🔑 فتح الأبواب</a></li>
                         <li><a href="#emergency">⚠️ الاستجابة للطوارئ</a></li>
                         <li><a href="#membership">📜 الاشتراك</a></li>
                         <li><a href="#tracking">📍 تتبع المركبات</a></li>
                     </ul>
                 </li>
                 <li><a href="#gallery" onclick="showGallery()">🖼️ معرض الخدمات</a></li>
-                <li><a href="#contact">📞 اتصل بنا</a></li>
-            </ul>
-        </nav>
+                <li class="dropdown">
+                    <a href="#">📞 اتصل بنا ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="tel:+213000000000">📞 الاتصال عبر الهاتف</a></li>
+                        <li><a href="#" id="send-location">💬 الاتصال عبر واتساب</a></li>
+                    </ul>
     </header>
 
     <section id="home" class="hero">
@@ -98,19 +125,22 @@
     </section>
     
     <section id="gallery" class="gallery">
-        <img src="image1.jpg" alt="صورة 1">
-        <img src="image2.jpg" alt="صورة 2">
-        <img src="image3.jpg" alt="صورة 3">
-        <img src="image4.jpg" alt="صورة 4">
-        <img src="image5.jpg" alt="صورة 5">
-        <img src="image6.jpg" alt="صورة 6">
-        <img src="image7.jpg" alt="صورة 7">
-        <img src="image8.jpg" alt="صورة 8">
+        <img src="image1.jpg" alt="صورة 1" onclick="openImage(this)">
+        <img src="image2.jpg" alt="صورة 2" onclick="openImage(this)">
+        <img src="image3.jpg" alt="صورة 3" onclick="openImage(this)">
+        <img src="image4.jpg" alt="صورة 4" onclick="openImage(this)">
+        <img src="image5.jpg" alt="صورة 5" onclick="openImage(this)">
+        <img src="image6.jpg" alt="صورة 6" onclick="openImage(this)">
+        <img src="image7.jpg" alt="صورة 7" onclick="openImage(this)">
+        <img src="image8.jpg" alt="صورة 8" onclick="openImage(this)">
     </section>
 
     <script>
         function showGallery() {
             document.getElementById("gallery").style.display = "flex";
+        }
+        function openImage(img) {
+            window.open(img.src, '_blank');
         }
     </script>
     
